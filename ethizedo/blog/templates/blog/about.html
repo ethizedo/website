@@ -1,0 +1,55 @@
+{% extends 'blog/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+    {% block extra_head %}
+    <link href="static/css/about.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/megrim" type="text/css"/>
+    {% endblock %}
+    <title>À propos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+{% block content %}
+
+<h1 class="text-center test"> À propos </h1>
+
+<h3 class=subtitle>Bonjour, et bienvenue sur mon blog !</h3>
+
+<img src="../../static/images/about.jpg" alt="A propos" class="image img-responsive">
+
+<div class="whole_text"
+<p class="first_paragraph">Il y a quelque temps, j'ai décidé d'arrêter totalement d'acheter des marques "made in China", qui produisent à faible coût et ne respectent pas leurs employés. J'ai voulu me tourner vers le local, ou du moins l'européen, où les conditions de travail sont encadrées (au minimum, certes, mais plus que dans d'autres pays). J'ai alors cherché, cherché, cherché longtemps sur la toile des marques éthiques qui ne soient pas hors de prix. Et je me suis rendue compte que la tâche était ardue. Comme je pense qu'on est nombreux.ses dans mon cas, j'ai voulu créer ce blog afin de regrouper toutes les marques dans un seul et même endroit, pour faire comme un annuaire. Ce n'est donc pas un blog de mode au sens "commun" du terme : ici, il n'y aura pas de shooting !</p>
+
+<p class="paragraph">Le but de ce blog, c'est d'abord et avant tout cet annuaire, donc : . Celui de tous les créateurs que j'ai trouvé, qui sont transparents sur les conditions de travail de leurs employés, et qui nous informent en tant que consommateur. </p>
+
+<p class="paragraph">Afin de dissiper tous les malentendus, je vous invite à lire cet article : où j'explique ce que c'est, "l'éthique", pour moi. Parce qu'on a tous une définition différente, et que vous comprendrez mieux si vous connaissez la mienne. </p>
+
+<p class="paragraph">Cette vision du respect de l'humain, c'est ma règle d'or pour toutes mes consommations. Pas seulement les vêtements, mais également pour la nourriture. </p>
+
+<p class="paragraph">À peu près en même temps, j'ai pris conscience de la quantité irréaliste de déchets que nous produisons, du suremballage et de la pollution générée par cela. Parce qu'un sac en papier, certes ça se recycle, mais à la base c'était un arbre et après ce sera incinéré. Je me suis donc orientée vers un mode de vie "zéro déchet". Concrètement, cela consiste juste au début à utiliser toujours le même sac à la boulangerie, au lieu d'en prendre un nouveau à chaque fois. Idem pour les fruits et légumes. Et puis, à force, à force, on se retrouve dans des magasins en vrac ou à faire son déodorant maison... </p>
+
+<p class="paragraph">Le but de ce blog, c'est donc de vous présenter tous les créateurs qui respectent leurs employés. Et, en plus, de vous montrer un mode de vie qui essaye de faire plus attention à l'environnement, aux autres, et à la planète. Responsable, en somme ! 
+Et comme je suis loin d'être parfaite, vous avez bien sûr des articles déculpabilisants parce que vouloir bien faire, c'est pas toujours si évident.</p>
+
+<p class="paragraph">Je vous souhaite une très belle lecture et espère que ça vous plaira.</p>
+
+<p class="paragraph signature">Ethizedo</p>
+
+
+<p class="paragraph">La quasi totalité des photos de ce blog sont prises avec un Olympus OMD EM10 Mark ii, parfois un Iphone SE.
+
+Le blog a été codé en Django et Bootstrap.</p>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

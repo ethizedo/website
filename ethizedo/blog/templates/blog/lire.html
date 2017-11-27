@@ -1,0 +1,58 @@
+{% extends 'blog/navbar.html' %}
+{% load threadedcomments_tags %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+    {% block extra_head %}
+    <link href="../../static/css/lire.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+    <title>Ethizedo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+
+<body>
+{% block content %}
+{% for cat in article.categorie.all %}
+  <h6 class="cat text-center"><a href="{% url 'blog_categorie' cat.slug %}">{{ cat.nom }}</a></h6>
+{% endfor %}
+<h1 class="text-center">{{ article.titre }} </h1>
+<h5 class="infos text-center">{{ article.date|date:"DATE_FORMAT" }}</h5>
+<img src="{{ article.image }}" alt="main picture" class="image img-responsive">
+<div class="contenu">{{ article.contenu|linebreaks }}</div>
+
+<nav aria-label="...">
+  <ul class="pager">
+    {% if previous_article == None %}
+    {% else %}
+    <a href="{% url 'article' previous_article.slug %}" class="previous"><span aria-hidden="true">&larr;</span> Précédent : {{previous_article.titre}} </a>
+    {% endif %}
+    {% if next_article == None %}
+    {% else %}
+    <a href="{% url 'article' next_article.slug %}" class="next">Suivant : {{next_article.titre}} <span aria-hidden="true">&rarr;</span></a>
+    {% endif %}
+  </ul>
+</nav>
+
+
+
+<div class="commentaires">
+  <h2 class="some_comment"> Commentaires </h2>
+{% render_comment_list for article %}
+<h2 class="some_comment"> Laisser un commentaire </h2>
+{% render_comment_form for article %}
+
+</div>
+
+
+
+{% endblock %}
+
+</body>
+</html>

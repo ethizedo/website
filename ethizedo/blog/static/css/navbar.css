@@ -1,0 +1,43 @@
+.container-fluid{
+  margin-right: -150px;
+  margin-left: -150px;
+  background-color: rgba(248,248,248,1);
+  padding-bottom: 3%;
+}
+
+.navbar a:hover {
+    color:rgb(169, 0, 0)!important;
+}
+
+
+.navbar-nav li a {
+  margin-left: 75px;
+  letter-spacing: 2px;
+    font-size: 16px;
+}
+
+footer p{
+    color:black;
+    margin-bottom: -2%;
+    margin-top: 1%;
+}
+
+footer{
+    background-color: rgb(248,248,248)!important;
+}
+
+.banner {
+  font-size:30px;
+    color:black;
+    font-family: 'MegrimMedium'; 
+    font-weight: normal; 
+    font-style: normal; 
+    text-decoration: none;
+  margin-top: 1%;
+    margin-bottom: -2%;
+}
+
+header a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+

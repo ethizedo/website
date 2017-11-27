@@ -1,0 +1,112 @@
+{% extends 'blog/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    {% block extra_head %}
+    <link href="static/css/firstpage.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+    <title>Ethizedo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+{% block content %}
+
+<!-- Carousel -->
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    {% for article in derniers_articles %}
+    <li data-target="#myCarousel" data-slide-to="{{ article.id }}" class="active"></li>
+    {% endfor %}
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  	
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+      <img src="" alt="annuaire">
+      <div class="carousel-caption">
+        <h1>Annuaire de la mode éthique et responsable</h1>
+        <p><a href="{% url 'annuaire' %}">Accéder</a></p>
+      </div> 
+        
+    </div>
+      {% for article in derniers_articles %}
+    <div class="item">
+      <img src="{{article.image}}" alt="Los Angeles">
+      <div class="carousel-caption">
+        <h1>{{ article.titre }}</h1>
+        <p><a href="{% url 'article' article.slug %}">Lire la suite</a></p>
+      </div> 
+        
+    </div>
+      {% endfor %}
+
+  </div>
+    
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> 
+
+
+<!-- List of the 5 following articles -->
+<div class="row ">
+ {% for article2 in derniers_articles %}
+  <div class="col-sm-8 text-center">
+    <div class="thumbnail">
+      <img src="{{ article2.image }}" alt="Los Angeles">
+      <a href="{% url 'article' article2.slug %}"> <h1 class="titre">{{ article2.titre }} </h1></a>
+      <h6 class="date">{{ article2.date|date:"DATE_FORMAT" }} </h6>
+      <p class="apercu">{{ article2.contenu|truncatechars:400 }}</p>
+    </div>
+  </div>
+  {% if forloop.first %}
+  <div class="col-sm-4 text-center">
+	<h1>À propos</h1>
+    <p> Bienvenue sur mon blog !</p>
+    <p> Ici on parle mode éthique et zéro déchet. Un peu d'autres choses aussi, plutôt orienté écolo. J'espère que ça vous plaira ! N'hésitez pas à me donner vos retours.
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% if is_paginated %}
+  <ul class="pagination text-center">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}
+
+</body>
+</html>

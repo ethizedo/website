@@ -1,0 +1,61 @@
+{% extends 'blog/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    {% block extra_head %}
+    <link href="../../static/css/categorie.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% endblock %}
+    <title>Ethizedo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+{% block content %}
+<div class="row ">
+ {% for article2 in derniers_articles_2 %}
+  <div class="col-sm-8 text-center">
+    <div class="thumbnail">
+      <img src="{{ article2.image }}" alt="{{ article2.titre }}">
+      <a href="{% url 'article' article2.slug %}"> <h1 class="titre">{{ article2.titre }} </h1></a>
+      <h6 class="date">{{ article2.date|date:"DATE_FORMAT" }} </h6>
+      <p class="apercu">{{ article2.contenu|truncatechars:400 }}</p>
+    </div>
+  </div>
+  {% if forloop.first %}
+  <div class="col-sm-4 text-center">
+  <h1>À propos</h1>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% if is_paginated %}
+  <ul class="pagination text-center">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endblock %}
+
+</body>
+</html>
