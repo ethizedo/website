@@ -48,7 +48,7 @@ class Marque(models.Model):
    nom=models.CharField(max_length=300)
    url=models.URLField()
    slug=models.SlugField(max_length=100)
-   contenu=models.TextField(null=True, blank=True)
+   contenu=models.CharField(max_length=380)
    reduction=models.TextField(null=True, blank=True)
    image=models.CharField(max_length=500, blank=True, null=True)
    categorie=models.ForeignKey('Categorie')
