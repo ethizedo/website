@@ -103,7 +103,6 @@ def view_article(request, slug):
         previous_article = article.get_previous_by_date()
     except Article.DoesNotExist:
         previous_article = None
-        print previous_article
 
     return render(request, 'blog/lire.html', {
         'article': article,
