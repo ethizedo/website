@@ -26,7 +26,7 @@ SECRET_KEY = 'gi2peda+_7l%)v=5i#^&n2^i*za3v%@q-+l)^e2g#2^es9m1rh'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "ethizedo.python-anywhere.com"
+    "ethizedo.pythonanywhere.com"
 ]
 
 
