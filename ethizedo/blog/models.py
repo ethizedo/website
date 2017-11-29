@@ -34,7 +34,7 @@ class Article(models.Model):
 class Categorie(models.Model):
     nom = models.CharField(max_length=30)
     slug = models.SlugField(max_length=100)
-    def __unicode__(self):
+    def __str__(self):
         return self.nom
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -53,7 +53,7 @@ class Marque(models.Model):
    image=models.CharField(max_length=500, blank=True, null=True)
    categorie=models.ForeignKey('Categorie')
    types=models.ManyToManyField('Type')
-   def __unicode__(self):
+   def __str__(self):
         """ 
         Cette méthode que nous définirons dans tous les modèles
         nous permettra de reconnaître facilement les différents objets que 
@@ -64,7 +64,7 @@ class Marque(models.Model):
 class Type(models.Model):
    nom=models.CharField(max_length=200)
    image=models.CharField(max_length=500)
-   def __unicode__(self):
+   def __str__(self):
         """ 
         Cette méthode que nous définirons dans tous les modèles
         nous permettra de reconnaître facilement les différents objets que 
