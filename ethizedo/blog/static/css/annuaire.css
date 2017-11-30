@@ -30,7 +30,7 @@ h3{
     
 }
 
-img{
+.img img{
     margin: auto;
     max-width: 80%;
     position: absolute;
@@ -48,8 +48,26 @@ div a:hover, a:visited, a:link, a:active {
     color: black;
 }
 
+.types{
+    display: inline-block ;
+    max-width: 20%;
+    height:0px;
+    margin: auto;
+    position:relative;
+    
+}
+
 .types img{
-    margin-bottom: 30%;
+    margin: auto;
+    max-width: 80%;
+    position: absolute;
+    width:auto;
+    height: auto;
+    top:0;
+    bottom:0;
+    left: 0;
+    right:0;
+    margin-bottom: 10%;    
 }
 
 #id_types li {
