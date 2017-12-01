@@ -1,0 +1,89 @@
+.container-fluid{
+  margin-right: -150px;
+  margin-left: -150px;
+  background-color: rgba(48, 46, 49, 0.2);
+}
+
+.liste-article{
+	border-style: solid;
+	border-width: medium;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+	margin-left: 0px;	
+    max-height: 600px;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+.carousel{
+	margin-left: 0px;
+	max-height: 600px;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+.row{
+	padding-top: 20px;
+}
+
+.about{
+	padding-top: -50px;
+}
+
+.titre{
+	margin-top: 4%;
+}
+
+.row .thumbnail{
+  background-color: rgba(117, 43, 4, 0);
+    border:none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.date{
+	margin-bottom: 3%;
+}
+
+.apercu{
+	text-align: justify;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.pagination{
+	margin-left: 20%;
+}
+
+body a:visited, a:link, a:active {
+    text-decoration: none;
+    color:rgb(169, 0, 0);
+}
+
+body a:hover{
+    text-decoration: none;
+    color:rgb(169, 0, 0);
+}
+
+h1{
+  color:rgb(169, 0, 0);
+}
+
+.container a:hover{
+       color:rgb(169, 0, 0);
+}
+
+.footer{
+      background-color: rgba(48, 46, 49, 0.2);
+}
+
+header {
+    background-color: rgba(248,248,248,1);
+}

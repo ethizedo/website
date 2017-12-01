@@ -1,0 +1,73 @@
+body{
+	width:100%;
+}
+
+.infos{
+    margin-bottom: 1%;
+}
+
+.cat{
+	margin-top: 4%;
+}
+
+.contenu{
+	text-align: justify;
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-indent: 5px;
+}
+
+.image{
+	margin-top: 4%;
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.commentaires{
+    margin-left: 10%;
+    width: 80%;
+}
+
+
+label{
+    width: 10%;
+}
+
+input, textarea{
+    width: 50%;
+}
+
+.submit{
+    margin-left: 27%;
+    width: 30%;
+}
+
+.submit-post{
+    border-radius: 10px;
+    background-color: white;
+    border-color: black;
+}
+
+.submit-preview{
+    margin-top: 3%;
+    border-radius: 10px;
+    background-color: white;
+    border-color: black;
+}
+
+#comments{
+    margin-bottom: 5%
+}
+
+.pager a{
+    display: inline-block;
+    color: black;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-size: 130%;
+    margin-right:15%;
+    margin-left: 8%
+}
+
