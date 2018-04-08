@@ -1,0 +1,26 @@
+{% extends 'blog/navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+    {% block extra_head %}
+    <link href="../../static/css/form.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Ethizedo - Erreur 404</title>
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+{% block content %}
+<p class="phrase" style="text-align : center;font-size:20px;font-weight:bold;">
+Oups... la page que vous demandez n'existe pas. Mais revenez donc à <a href="www.ethizedo.fr"> l'accueil</a>, il y a plein d'articles qui vous attendent !
+
+{% endblock %}
+
+</body>
+</html>
