@@ -1,6 +1,9 @@
 .display{
-    vertical-align: top;
+    display:block;
+}
 
+.thumbnail{
+   height:36em;
 }
 
 
@@ -9,17 +12,48 @@
       border-style: solid;
     border-color: rgb(169, 0, 0);
 }
-
+h2{
+        height:2em;
+        margin:auto;
+    }
 .apercu{
-    height:250px;
+    height:19em;
     text-align: justify ;
     padding-right: 3%;
     padding-left: 3%;
-    padding-top: 3%
+    padding-top: 3%;
+    font-family: Cantarell;
+    font-size:medium;
 }
 
-h3{
+
+@media(max-width: 768px){
+    h2{
+        height:2em;
+        margin:auto;
+    }
+
+    .apercu{
+    height:23em;
+    text-align: justify ;
+    vertical-align:top;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 3%;
+    font-family: Cantarell;
+    font-size:medium;
+}
+    .thumbnail{
+   height:40em;
+   margin-left:-15%;
+   margin-right:4%;
+    }
+}
+
+
+.thumbnail h2{
     padding-top: 5%;
+    font-size:x-large;
 }
 
 .img{
@@ -27,7 +61,7 @@ h3{
     height:80px;
     margin: auto;
     position:relative;
-    
+
 }
 
 .img img{
@@ -50,25 +84,18 @@ div a:hover, a:visited, a:link, a:active {
 }
 
 .types{
-    display: inline-block ;
+    display: inline;
     max-width: 20%;
     height:0px;
-    margin: auto;
-    position:relative;
-    
+    position:absolute;
+    padding-bottom:2px;
 }
 
 .types img{
-    margin: auto;
     max-width: 80%;
-    position: absolute;
-    width:auto;
-    height: auto;
-    top:0;
-    bottom:0;
     left: 0;
     right:0;
-    margin-bottom: 10%;    
+    position:absolute;
 }
 
 #id_types li {
@@ -104,4 +131,11 @@ form p{
 
 form{
     display: inline-block ;
+}
+
+.reduction{
+    color:rgb(169, 0, 0);
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
 }

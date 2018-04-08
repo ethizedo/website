@@ -8,48 +8,60 @@
     {% block extra_head %}
     <link href="../../static/css/lire.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Merienda+One|Pacifico|Satisfy|Yesteryear" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>{{ article.titre }}</title>
+    <meta name="description" content="{{article.meta_description}}" />
+    <meta property="og:title" content="{{article.titre}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.ethizedo.fr/article/{{article.slug}}/" />
+    <meta property="og:image" content="{{article.image}}"/>
+    <meta property="og:description" content="{{article.meta_description}}"/>
+    <meta property="og:site-name" content="Ethizedo"/>
     {% endblock %}
-    <title>Ethizedo</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
 
 <body>
+
+<section>
+<article>
 {% block content %}
 {% for cat in article.categorie.all %}
-  <h6 class="cat text-center"><a href="{% url 'blog_categorie' cat.slug %}">{{ cat.nom }}</a></h6>
+  <div class="cat text-center"><a href="{% url 'blog_categorie' cat.slug %}">{{ cat.nom }}</a></div>
 {% endfor %}
 <h1 class="text-center">{{ article.titre }} </h1>
-<h5 class="infos text-center">{{ article.date|date:"DATE_FORMAT" }}</h5>
+<div class="infos text-center">{{ article.date|date:"DATE_FORMAT" }}</div>
 <img src="{{ article.image }}" alt="main picture" class="image img-responsive">
+{% autoescape off %}
 <div class="contenu">{{ article.contenu|linebreaks }}</div>
-
+{% endautoescape %}
 <nav aria-label="...">
   <ul class="pager">
     {% if previous_article == None %}
     {% else %}
-    <a href="{% url 'article' previous_article.slug %}" class="previous"><span aria-hidden="true">&larr;</span> Précédent : {{previous_article.titre}} </a>
+    <a href="{% url 'article' previous_article.slug %}" class="previous"><span aria-hidden="true">&larr;</span> Précédent : <h3>{{previous_article.titre}}</h3> </a>
     {% endif %}
     {% if next_article == None %}
     {% else %}
-    <a href="{% url 'article' next_article.slug %}" class="next">Suivant : {{next_article.titre}} <span aria-hidden="true">&rarr;</span></a>
+    <a href="{% url 'article' next_article.slug %}" class="next">Suivant : <h3>{{next_article.titre}}</h3> <span aria-hidden="true">&rarr;</span></a>
     {% endif %}
   </ul>
 </nav>
-
+</article>
 
 
 <div class="commentaires">
-  <h2 class="some_comment"> Commentaires </h2>
+  <h4 class="some_comment"> Commentaires </h4>
 {% render_comment_list for article %}
-<h2 class="some_comment"> Laisser un commentaire </h2>
+<h4 class="some_comment"> Laisser un commentaire </h4>
 {% render_comment_form for article %}
-
 </div>
-
+</section>
 
 
 {% endblock %}

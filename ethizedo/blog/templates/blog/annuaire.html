@@ -8,38 +8,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Annuaire de la mode éthique</title>
+    <meta name="description" content="Mon annuaire de la mode éthique. On y trouve de très nombreuses marques, qu'on peut filtrer par made in france, in europe, vêtement pour homme, pour femme, et bien d'autre encore !" />
+    <meta property="og:title" content="Annuaire de la mode éthique" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.ethizedo.fr/annuaire/" />
+    <meta property="og:image" content="../../static/images/annuaire.jpg"/>
+    <meta property="og:description" content="Mon annuaire de la mode éthique. On y trouve de très nombreuses marques, qu'on peut filtrer par made in france, in europe, vêtement pour homme, pour femme, et bien d'autre encore !"/>
+    <meta property="og:site-name" content="Ethizedo"/>
     {% endblock %}
-    <title>Ethizedo</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
 
 {% block content %}
+
+<h1 style="margin-left:10%;color:rgb(169, 0, 0);margin-top:3%;"> Annuaire de la mode éthique </h1>
+<p style="margin-left:3%;font-style:italic;margin-top:3%;margin-bottom:4%;"> Si vous voulez comprendre comment je choisis les marques, ou comment ont été pensés les filtres, je vous invite à lire mon article qui explique <a href="http://www.ethizedo.fr/article/comment-jai-pense-mon-annuaire-de-la-mode-ethique" style="color:rgb(169, 0, 0);"> comment j'ai pensé mon annuaire de la mode éthique </a>. N'hésitez pas à me faire des retours par mail (contact[at]ethizedo.fr) ou sur instagram !</p>
 <form method="get">
     {{ filter.form.as_p }}
     <button type="submit">Search</button>
 
   </form>
-        <p class="contact"> 
-    Vous voulez me proposer une marque ou changer l'image de la votre ? => ethizedo [at] tutanota.com 
+        <p class="contact">
+    Vous voulez me proposer une marque ? => contact[at]ethizedo.fr
   </p>
   <ul>
 
     <div class="list">
   {% for types in filter.qs %}
-  <div class="col-sm-3 display">
+  <div class="col-sm-4 col-md-3 display center-block">
     <div class="thumbnail">
     <a target="_blank" href='{{ types.url }}'>
       <div class="img">
         <img src="{{ types.image }}" alt="{{types.nom}} ">
       </div>
-        <h3 class="text-center"> {{types.nom}} </h3>
-        <p class="apercu">{{ types.contenu }}</p>
+        <h2 class="text-center"> {{types.nom}} </h2>
+        <div class="apercu">
+        {% autoescape off %}
+        <p>{{ types.contenu }}</p>
+        {% endautoescape %}
+        <p class="reduction">{{ types.reduction }}</p>
+        </div>
       <div class="types2">
       {% for cat in types.types.all %}
         <div class="col-sm-1 types">
-          <img  src="{{ cat.image }}" alt="{{cat.nom}}" >
+          <img  src="{{ cat.image }}" alt="{{cat.nom}}" title="{{cat.nom}}" >
         </div>
       {% endfor %}
       </div>

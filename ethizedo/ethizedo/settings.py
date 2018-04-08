@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gi2peda+_7l%)v=5i#^&n2^i*za3v%@q-+l)^e2g#2^es9m1rh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "ethizedo.pythonanywhere.com"
+    "www.ethizedo.fr"
 ]
 
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_comments',
     'threadedcomments',
+    'django.contrib.sitemaps',
     'blog',
 ]
 

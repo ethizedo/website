@@ -2,7 +2,7 @@
 # Create your views here.
 from django.http import HttpResponse, Http404
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from blog.models import Article
 from blog.models import Categorie
 from blog.models import Marque
@@ -22,19 +22,19 @@ def contact(request):
     # à la page.
     form = ContactForm(request.POST or None)
     # Nous vérifions que les données envoyées sont valides
-    # Cette méthode renvoie False s'il n'y a pas de données 
+    # Cette méthode renvoie False s'il n'y a pas de données
     # dans le formulaire ou qu'il contient des erreurs.
-    if form.is_valid(): 
+    if form.is_valid():
         # Ici nous pouvons traiter les données du formulaire
         sujet = form.cleaned_data['sujet']
         message = form.cleaned_data['message']
         envoyeur = form.cleaned_data['envoyeur']
         renvoi = form.cleaned_data['renvoi']
 
-        # Nous pourrions ici envoyer l'e-mail grâce aux données 
+        # Nous pourrions ici envoyer l'e-mail grâce aux données
         # que nous venons de récupérer
         envoi = True
-    
+
     # Quoiqu'il arrive, on affiche la page du formulaire.
     return render(request, 'blog/form.html', locals())
 
@@ -44,8 +44,8 @@ class ListeArticles(ListView):
     model=Article
     context_object_name = "derniers_articles"
     template_name = "blog/firstpage.html"
-    paginate_by=3
-    #lte : less or equal than 
+    paginate_by=6
+    #lte : less or equal than
     #queryset=Article.objects.filter(date__lte=timezone.now()).order_by('-date')[0:3]
     #queryset = Article.objects.filter(categorie__id=1)
 
@@ -62,6 +62,7 @@ class ListeArticles(ListView):
         context = super(ListeArticles, self).get_context_data(**kwargs)
         # Nous ajoutons la liste des catégories, sans filtre particulier
         context['categories']= Categorie.objects.all()
+        context['entretien']=Article.objects.filter(titre__regex=r'^\[[Echange]')
         context['all_articles']=Article.objects.filter(date__lte=timezone.now()).order_by('-date')
         return context
 
@@ -72,7 +73,7 @@ class ListeArticlesFilter(ListView):
     template_name = "blog/categorie.html"
     paginate_by=5
     def get_queryset(self):
-        return Article.objects.filter(categorie__slug=self.kwargs['slug'])
+        return Article.objects.filter(categorie__slug=self.kwargs['slug']).order_by('-date')
 
 class Annuaire(ListView):
     model=Marque
@@ -86,10 +87,9 @@ class Annuaire(ListView):
         context=super(Annuaire, self).get_context_data(**kwargs)
         context['marque']=Marque.objects.all()
         #context['filter']=Marque.objects.filter(types__nom=self.kwargs['types'])
-        context['filter']=ProductFilter(self.request.GET, queryset=Marque.objects.all())
+        context['filter']=ProductFilter(self.request.GET, queryset=Marque.objects.all().order_by("nom"))
         #context['marque2']=Marque.objects.filter(filtre)
         return context
-
 
 def view_article(request, slug):
     """ Afficher un article complet """
@@ -109,12 +109,12 @@ def view_article(request, slug):
         'next_article': next_article,
         'previous_article': previous_article
     })
-    
+
 
 def list_articles(request, month, year):
     """ Liste des articles d'un mois précis. """
     return HttpResponse(
-        "Vous avez demandé les articles de {0} {1}.".format(month, year)  
+        "Vous avez demandé les articles de {0} {1}.".format(month, year)
     )
 
 def about(request):

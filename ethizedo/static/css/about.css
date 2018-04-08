@@ -16,6 +16,8 @@
 	margin-right: 10%;
 	font-size: 16px;
 	margin-bottom: 40px;
+	font-family: Cantarell;
+    font-size:large;
 }
 
 .paragraph{
@@ -27,14 +29,25 @@
 	padding-top: 30px;
 	padding-bottom: 30px;
 	margin: 0 auto;
-	height: auto; 
-    width: auto; 
-    max-width: 1100px; 
+	height: auto;
+    width: auto;
+    max-width: 1100px;
     max-height: 1100px;
 }
 
 .signature{
-	font-family: 'MegrimMedium'; 
-    font-weight: normal; 
-    font-style: normal; 
+	font-family: 'MegrimMedium';
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body a:visited, a:link, a:active {
+    text-decoration: none;
+    color:rgb(169, 0, 0);
+}
+
+body a:hover{
+    text-decoration: none;
+    color:rgb(169, 0, 0);
 }

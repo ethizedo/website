@@ -14,9 +14,9 @@
 
 
 .navbar-nav li a {
-  margin-left: 75px;
+  margin-left: 60px;
   letter-spacing: 2px;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 footer p{
@@ -31,9 +31,9 @@ footer{
 
 .banner {
   font-size:40px;
-    font-family: 'MegrimMedium'; 
-    font-weight: 900; 
-    font-style: normal; 
+    font-family: 'MegrimMedium';
+    font-weight: 900;
+    font-style: normal;
     text-decoration: none;
     margin-top: 1%;
     margin-bottom: -2%;

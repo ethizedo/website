@@ -4,8 +4,11 @@
     <link href="../../static/css/bootstrap.css" rel="stylesheet">
     <link href="../../static/css/navbar.css" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/megrim" type="text/css"/>
-    {% block extra_head %}{% endblock %}
-    <title>Ethizedo</title>
+    <link rel="icon" type="image/x-icon" href="../../static/images/favicon.ico" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
+    {% block extra_head %}
+
+    {% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -16,22 +19,42 @@
       </header>
       <nav class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header">   
+          <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-              <span class="icon-bar"></span> 
-              <span class="icon-bar"></span>  
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li><a href="{% url 'blog_categorie' 'mode-ethique-et-responsable' %}">Mode éthique</a></li>
-              <li><a href="#">Zéro déchet</a></li>
-              <li><a href="#">Autre</a></li>
+              <span class="beginning">
+              <li class="test"><a href="{% url 'blog_categorie' 'mode-ethique-et-responsable' %}" class="test">Mode éthique</a></li>
+              <li><a href="{% url 'blog_categorie' 'zero-dechet' %}">Zéro déchet</a></li>
+              <li><a href="{% url 'blog_categorie' 'sinformer' %}">S'informer</a></li>
               <li><a href="{% url 'about'%}">À propos</a></li>
-              <li><a href="{% url 'contact'%}">Contact</a></li>
+              <li class="dropdown">
+          <a href="{% url 'blog_categorie' 'voyage' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voyages <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+                <a href="#"> France <i class="icon-arrow-right"></i></a>
+                <ul class="dropdown-menu sub-menu">
+                  <li><a href="{% url 'blog_categorie' 'bretagne' %}">Bretagne</a></li>
+                  <li><a href="{% url 'blog_categorie' 'lyon' %}">Lyon</a></li>
+                </ul>
+              </li>
+          </ul>
+        </li>
+              <li><a href="{% url 'annuaire'%}">Annuaire</a></li>
+            </span>
+              <span class="bouton">
+              <li class="fb"><a href="https://www.facebook.com/ethizedo/"><img src="../../static/images/iconsfb.png" alt="facebook"></a></li>
+              <li class="insta"><a href="https://www.instagram.com/ethizedo/"><img src="../../static/images/iconsistg.png" alt="instagram"></a></li>
+              <li class="mail"><a href="{% url 'contact'%}"><img src="../../static/images/iconsmail.png" alt="mail"></a></li>
+              </span>
             </ul>
           </div>
         </div>

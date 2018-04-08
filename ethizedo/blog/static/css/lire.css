@@ -10,6 +10,14 @@ body{
 	margin-top: 4%;
 }
 
+h6 a:visited, a:link, a:active {
+    color: rgb(169, 0, 0);
+}
+
+h6 a:hover{
+    font-style: unset ;
+}
+
 .contenu{
 	text-align: justify;
 	margin-top: 5%;
@@ -70,4 +78,5 @@ input, textarea{
     margin-right:15%;
     margin-left: 8%
 }
+
 

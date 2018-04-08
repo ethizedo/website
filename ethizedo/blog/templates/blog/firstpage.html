@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Ethizedo - Un blog où l'on parle mode éthique et zéro déchet</title>
+    <meta name="description" content="Bienvenue sur mon blog, où on va parler entre autres mode éthique et zéro déchet ! On y trouve aussi un annuaire de la mode éthique avec de très nombreuses marques référencées, triées et filtrables !" />
+    <meta name="google-site-verification" content="T0rHPsBjwlhuGJWA9bt3f9Dptb25yemnqsN3jxou40g" />
+    <meta property="og:title" content="Ethizedo - Zéro déchet et mode éthique" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://www.ethizedo.fr/" />
+    <meta property="og:image" content="../../static/images/apropos.jpg"/>
+    <meta property="og:description" content="Bienvenue sur mon blog, où on va parler entre autres mode éthique et zéro déchet ! "/>
+    <meta property="og:site-name" content="Ethizedo"/>
     {% endblock %}
-    <title>Ethizedo</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -18,6 +27,8 @@
 {% block content %}
 
 <!-- Carousel -->
+<section>
+    <article>
  <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -27,29 +38,29 @@
   </ol>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-  	
+
     <div class="carousel-inner" role="listbox">
       <div class="item active">
       <img src="../../static/images/annuaire.jpg" alt="annuaire">
       <div class="carousel-caption">
-        <h1>Annuaire de la mode éthique et responsable</h1>
-        <p><a href="{% url 'annuaire' %}">Accéder</a></p>
-      </div> 
-        
+        <h1> <strong> Annuaire de la mode éthique et responsable </strong></h1>
+        <p><a href="/annuaire-de-la-mode-ethique/">Accéder</a></p>
+      </div>
+
     </div>
       {% for article in derniers_articles %}
     <div class="item">
-      <img src="{{article.image}}" alt="Los Angeles">
+      <img src="{{article.image}}" alt="article image">
       <div class="carousel-caption">
         <h1>{{ article.titre }}</h1>
         <p><a href="{% url 'article' article.slug %}">Lire la suite</a></p>
-      </div> 
-        
+      </div>
+
     </div>
       {% endfor %}
 
   </div>
-    
+
   </div>
   <!-- Left and right controls -->
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -60,30 +71,42 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div> 
+</div>
+</article>
+</section>
 
+<section>
 
 <!-- List of the 5 following articles -->
 <div class="row ">
  {% for article2 in derniers_articles %}
+ <article>
   <div class="col-sm-8 text-center">
     <div class="thumbnail">
       <img src="{{ article2.image }}" alt="{{ article2.titre }}">
-      <a href="{% url 'article' article2.slug %}"> <h1 class="titre">{{ article2.titre }} </h1></a>
-      <h6 class="date">{{ article2.date|date:"DATE_FORMAT" }} </h6>
+      <a href="{% url 'article' article2.slug %}" title="{{ article2.titre }}"> <h2 class="titre">{{ article2.titre }} </h2></a>
+      <h3 class="date">{{ article2.date|date:"DATE_FORMAT" }} </h3>
+      {% autoescape off %}
       <p class="apercu">{{ article2.contenu|truncatechars:400 }}</p>
+      {% endautoescape %}
     </div>
   </div>
+  </article>
   {% if forloop.first %}
   <div class="col-sm-4 text-center">
-	<h1>À propos</h1>
+	<h2>À propos</h2>
     <p> Bienvenue sur mon blog !</p>
-    <img src="../../static/images/apropos.jpg" class="apropos">
-    <p> Une pincée de mode éthique, un zeste de zéro déchet, et des gouttes d'écologie... J'espère que ça vous plaira ! Si vous avez des remarques, des suggestions, des idées d'améliorations, n'hésitez pas à me les donner : ethizedo [at] tutanota.com je les accueillerai avec grand plaisir !
+    <img src="../../static/images/apropos.jpg" class="apropos" alt="à propos">
+    <p> Une pincée de <strong>mode éthique</strong>, un zeste de <strong>zéro déchet</strong>, et des gouttes <strong>d'écologie</strong>... J'espère que ça vous plaira ! Si vous avez des remarques, des suggestions, des idées d'améliorations, n'hésitez pas à me les donner : contact[at]ethizedo.fr je les accueillerai avec grand plaisir !
+    <h2 class="echange">Echanges</h2>
+    {% for echange in entretien %}
+    <a href="{% url 'article' echange.slug %}"> <h3 class="echange2">{{ echange.titre }} </h3></a>
+      {% endfor %}
   </div>
   {% endif %}
 {% endfor %}
 </div>
+</section>
 
 {% if is_paginated %}
   <ul class="pagination text-center">
