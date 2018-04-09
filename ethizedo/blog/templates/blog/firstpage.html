@@ -92,8 +92,8 @@
     </div>
   </div>
   </article>
-  {% if forloop.first %}
-  <div class="col-sm-4 text-center">
+  {% endfor %}
+  <aside class="asidecss">
 	<h2>À propos</h2>
     <p> Bienvenue sur mon blog !</p>
     <img src="../../static/images/apropos.jpg" class="apropos" alt="à propos">
@@ -102,9 +102,7 @@
     {% for echange in entretien %}
     <a href="{% url 'article' echange.slug %}"> <h3 class="echange2">{{ echange.titre }} </h3></a>
       {% endfor %}
-  </div>
-  {% endif %}
-{% endfor %}
+  </aside>
 </div>
 </section>
 
