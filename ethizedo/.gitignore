@@ -1,5 +1,9 @@
-*.pyc\
-__pycache__\
-myvenv\
-db.sqlite3\
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
 .DS_Store
+__init__.py
+settings.py
+urls.py
+wsgi.py
